@@ -1,0 +1,109 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #A1E3F9;
+  font-family: "Figtree";
+}
+
+.pt-serif-regular {
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pt-serif-bold {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.pt-serif-regular-italic {
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.pt-serif-bold-italic {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+
+
+body{
+  @apply text-black flex flex-col items-center
+}
+
+button{
+  @apply text-black 
+  hover:cursor-pointer hover:-translate-y-0.5 hover:bg-[#f3f3f3] hover:shadow-xl
+  transition-all duration-300
+}
+.button{
+  @apply bg-white rounded-sm px-3 py-2 shadow-sm
+  hover:-translate-y-0.5 hover:rotate-2 hover:shadow-md hover:bg-[#f3f3f3]
+  transition-all duration-150
+}
+.back-button{
+  @apply bg-white rounded-xl p-4 pl-5 shadow-sm flex flex-col justify-center items-center self-center
+  hover:-translate-y-0.5 hover:rotate-4 hover:shadow-md hover:bg-[#f3f3f3]
+  transition-all duration-150
+}
+input{
+  @apply 
+  border rounded-sm px-3 py-2 bg-white text-base
+  hover:bg-blue-100   
+  focus:border-b focus:outline-0 focus:border-blue-100
+}
+.span{
+  @apply text-base italic underline w-[150px]
+}
+select{
+  @apply bg-white
+}
+h1{
+  @apply text-3xl
+}
+.looking-at-animation{
+  @apply hover:-translate-y-0.5 transition-all duration-200 hover:bg-white/70
+}
+.accent-color{
+  @apply bg-[#646cff];
+}
+
+
+
+
