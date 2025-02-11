@@ -1,7 +1,8 @@
 {
-  "name": "electron-app",
+  "name": "expense-tracker",
+  "productName": "Expense Tracker",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
@@ -15,6 +16,7 @@
     "dist:mac": "npm run transpile:electron && npm run build &&  electron-builder --mac --arm64",
     "dist:win": "npm run transpile:electron && npm run build &&  electron-builder --win --x64",
     "dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64"
+    
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -57,5 +59,16 @@
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
     "vite-plugin-electron-renderer": "^0.14.6"
+  },
+  "build": {
+  "artifactName":"${productName}.${ext}",
+  "appId": "com.expensetracker.app",
+  "productName":"Expense Tracker",
+  "win": {
+    "icon": "public/icon.ico"
+  },
+  "linux": {
+    "icon": "public/icon.png"
   }
+}
 }
