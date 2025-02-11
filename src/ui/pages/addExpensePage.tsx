@@ -10,6 +10,7 @@ import { DateCalendar } from "@mui/x-date-pickers";
 import DialogPopUp from "../components/Dialog";
 import AlertMessage from "../components/Alert";
 import { Link } from "react-router-dom";
+import Backgorund from "../components/Backgorund";
 
 interface CalendarOutput{
     $D:number,
@@ -98,8 +99,8 @@ const AddExpensePage = () => {
     }
 
     return ( 
-        <div className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] p-24">
-                <div className="w-[100%] flex flex-row justify-between h-full py-24 px-12">
+        <div className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] overflow-hidden">
+                <div className="w-[100%] flex flex-row justify-between h-full py-[192px] px-[144px] z-10 overflow-hidden">
                     <div className="flex flex-col items-start justify-start gap-12 ">
                         <div className="flex flex-col gap-4 items-start w-[100%]"> 
                             <div className="flex flex-col gap-1 items-start w-[100%]">
@@ -132,21 +133,26 @@ const AddExpensePage = () => {
                         </div>
 
 
-                        <div className="flex flex-col gap-1 items-start border bg-white rounded-sm">
+                        <div className="flex flex-col gap-1 items-start rounded-sm border border-slate-300 w-[100%]">
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DateCalendar onChange={(value)=>handleDateInputChange(value)} 
-                                sx={{width:"100%",height:"100%","& .MuiPickersDay-root":{fontSize:"0.9rem",fontStyle:"italic"},"& .MuiPickersDay-root:hover": {
+                                sx={{border:"none",backgroundColor:"#0A2472",width:"100%",height:"100%",
+                                    "& .MuiPickersDay-root":{fontSize:"0.9rem",fontStyle:"italic",color:"white"},"& .MuiPickersDay-root:hover": {
                                 backgroundColor: "#A1E3F9 ", // Custom hover color
-                                color: "black", // Change text color
+                                color: "white", // Change text color
                                 borderRadius: "50%", // Optional: fully rounded
                                 transform: "", // Optional: slightly enlarge
                                 transition: "0.3s ease", // Smooth hover transition
-          },}}/>
+                                },
+                                "& .MuiTypography-root":{color:"white"},
+                                "& .MuiSvgIcon-root":{color:"white"},
+                                "& .MuiDateCalendar-root":{border:"none"},
+                                }}/>
                             </LocalizationProvider>
                         </div>                            
                     </div>
 
-                    <div className="flex flex-col items-center h-full"> 
+                    <div className="flex flex-col items-center h-full z-10"> 
                         <div className="flex flex-col items-center justify-start w-[300px] h-[400px]">
                             {expenseImage ? 
                             <img src={expenseImage} className="max-w-[300px] max-h-[400px] rounded-sm" alt="" />
@@ -155,22 +161,23 @@ const AddExpensePage = () => {
                         }
                         </div>
 
-                        <div className="flex flex-col gap-1 items-start">
+                        <div className="flex flex-col gap-1 items-start z-10">
                             <label className="m-0 text-xs" htmlFor="Expense Category">Add Expense Receipt</label>
                             <input className="border p-2" type="file" accept="image/*" onChange={(e)=>handleFileChange(e as React.ChangeEvent<HTMLInputElement>)}/>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row gap-4 justify-end items-center">
-                    <button className="button" onClick={()=>handleClick(expenseTitle,expenseAmount,expenseInfo,expenseImage,expenseDate,expenseCategory)}>Add Expense</button>
+                <div className="flex flex-row gap-4 justify-end items-center z-10">
+                    <button className="button add-button" onClick={()=>handleClick(expenseTitle,expenseAmount,expenseInfo,expenseImage,expenseDate,expenseCategory)}>Add Expense</button>
                     {/* <button className="button" onClick={()=>emptyAllFields()}>Empty Fields</button> */}
                 </div>
 
                 {showAlert && <AlertMessage message={alertMessage}/>}
 
-                <Link to="/" className="absolute top-20 left-20 back-button"><ArrowBackIosIcon/></Link>
+                <Link to="/" className="absolute top-20 left-20 back-button z-10"><ArrowBackIosIcon  sx={{color:"white"}}/></Link>
                 {/* <button onClick={()=>emptyStoreData()}>Empty Store</button> */}
                 {dialogOpenState && <DialogPopUp message={"Your expense has been added successfully"} showSecondButton={true} triggerVisibility={()=>setDialogOpenState(!dialogOpenState)}/>}
+                <Backgorund randomAnimOn={false} />
         </div>
      );
 }

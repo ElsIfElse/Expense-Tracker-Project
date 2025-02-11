@@ -32,8 +32,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #A1E3F9;
+  /* background-color: #A1E3F9; */
   font-family: "Figtree";
+
 }
 
 .pt-serif-regular {
@@ -61,47 +62,86 @@ body {
 }
 
 
-
+label{
+  @apply text-white
+}
 
 body{
-  @apply text-black flex flex-col items-center
+  @apply text-white flex flex-col items-center  
+}
+select{
+  @apply text-white cursor-pointer
+  hover:bg-[rgba(10,36,114,0.8)]
+  active:bg-[rgba(10,36,114,0.8)]
+  focus:bg-[rgba(10,36,114,0.8)]
+  bg-[#0A2472] 
+  border-none
+}
+option{
+  @apply text-white cursor-pointer   
+  hover:bg-[rgba(10,36,114,0.8)]
+  active:bg-[rgba(10,36,114,0.8)]
+  focus:bg-[rgba(10,36,114,0.8)]
+  bg-[#123499]
+  border-none
 }
 
 button{
   @apply text-black 
-  hover:cursor-pointer hover:-translate-y-0.5 hover:bg-[#f3f3f3] hover:shadow-xl
+  hover:cursor-pointer hover:-translate-y-0.5 hover:bg-[#f3f3f3] hover:shadow-xl 
   transition-all duration-300
 }
 .button{
   @apply bg-white rounded-sm px-3 py-2 shadow-sm
-  hover:-translate-y-0.5 hover:rotate-2 hover:shadow-md hover:bg-[#f3f3f3]
+  hover:-translate-y-0.5 hover:rotate-2 hover:shadow-md
   transition-all duration-150
 }
+.add-button{
+  @apply relative bottom-8 px-10  bg-[#123499] text-white hover:bg-[rgba(26,67,191,0.6)]
+}
 .back-button{
-  @apply bg-white rounded-xl p-4 pl-5 shadow-sm flex flex-col justify-center items-center self-center
-  hover:-translate-y-0.5 hover:rotate-4 hover:shadow-md hover:bg-[#f3f3f3]
+  @apply bg-[#123499] rounded-xl p-4 pl-5 shadow-sm flex flex-col justify-center items-center self-center
+  hover:-translate-y-0.5 hover:rotate-4 hover:shadow-md hover:bg-[rgba(26,67,191,0.6)]
   transition-all duration-150
 }
 input{
   @apply 
-  border rounded-sm px-3 py-2 bg-white text-base
-  hover:bg-blue-100   
-  focus:border-b focus:outline-0 focus:border-blue-100
+   rounded-sm px-3 py-2 bg-[#0A2472] text-base text-white border-none
+   hover:bg-[rgba(10,36,114,0.8)]
+   active:bg-[rgba(10,36,114,0.8)]
+   focus:bg-[rgba(10,36,114,0.8)]
+  focus:outline-0
 }
 .span{
-  @apply text-base italic underline w-[150px]
-}
-select{
-  @apply bg-white
+  @apply text-base italic underline w-[150px] text-white
 }
 h1{
-  @apply text-3xl
+  @apply text-3xl text-white
 }
 .looking-at-animation{
   @apply hover:-translate-y-0.5 transition-all duration-200 hover:bg-white/70
 }
 .accent-color{
-  @apply bg-[#646cff];
+  @apply text-[#0A2472];
+}
+.grid-tile-x{
+  @apply border-[1px]  border-[rgba(255,255,255,0.3)] h-[5vh] w-[5vw] bg-[#00072D]
+  hover:bg-[rgba(10,36,114,1)] hover:rounded-sm hover:scale-125 hover:cursor-crosshair
+  
+  transition-all duration-100
+}
+
+.bg-color{
+  @apply bg-[#123499]
+}
+/* .card-bg-color{ 
+  @apply bg-[#051650]
+} */
+.card-bg-color{ 
+  @apply bg-[#0A2472] hover:bg-[rgba(10,36,114,0.8)]
+}
+h3{
+  @apply text-white
 }
 
 

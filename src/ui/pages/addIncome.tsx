@@ -6,6 +6,7 @@ import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import AlertMessage from "../components/Alert";
 import { Link } from "react-router-dom";
+import Backgorund from "../components/Backgorund";
 
 
 const AddIncomePage = () => {
@@ -108,8 +109,8 @@ const AddIncomePage = () => {
     }
 
     return ( 
-        <div className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] p-24">
-                <div className="w-[100%] flex flex-row justify-between h-full py-24 px-12">
+        <div className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] ">
+                <div className="w-[100%] flex flex-row justify-between h-full pt-[192px] px-[144px] z-10 ">
                     <div className="flex flex-col items-start justify-start gap-12 ">
                         <div className="flex flex-col gap-4 items-start w-[100%]"> 
                     <div className="flex flex-col gap-1 items-start w-[100%]">
@@ -139,7 +140,7 @@ const AddIncomePage = () => {
                         </select>
                     </div>
                     </div>
-                        <div className="flex flex-col gap-1 items-start border bg-white rounded-sm">
+                        <div className="flex flex-col gap-1 items-start border bg-white rounded-sm z-10">
                             <LocalizationProvider  dateAdapter={AdapterDayjs}>
                                         <DateCalendar onChange={(value)=>handleDateInputChange(value)} 
                                         
@@ -155,14 +156,15 @@ const AddIncomePage = () => {
                     </div>
                 </div>
                          
-        <div className="flex flex-row gap-4 justify-end items-center">
-            <button className="button" onClick={()=>handleClick(incomeTitle,incomeAmount,incomeInfo,incomeDate,incomeCategory)}>Add Income</button>
+        <div className="flex flex-row gap-4 justify-end items-center z-10">
+            <button className="button add-button" onClick={()=>handleClick(incomeTitle,incomeAmount,incomeInfo,incomeDate,incomeCategory)}>Add Income</button>
             {/* <button className="button" onClick={()=>emptyAllFields()}>Empty Fields</button> */}
         </div>
        {showAlert && <AlertMessage message={alertMessage}/>}
-       <Link to="/" className="absolute top-20 left-20 back-button"><ArrowBackIosIcon/></Link>
+       <Link to="/" className="absolute top-20 left-20 back-button z-10"><ArrowBackIosIcon  sx={{color:"white"}}/></Link>
        {/* <button onClick={()=>emptyIncomeStore()}>Empty Store</button> */}
         {dialogOpenState && <DialogPopUp  message="Income added successfully" showSecondButton={false} triggerVisibility={()=>setDialogOpenState(!dialogOpenState) } refreshPage={true}/>}
+        <Backgorund randomAnimOn={true} />
         </div>
         
      );

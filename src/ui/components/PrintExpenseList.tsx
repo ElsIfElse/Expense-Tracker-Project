@@ -24,7 +24,7 @@ const PrintExpenseList = () => {
         <>
             {expenses && expenses.map((expense)=>(
                 <div 
-                className="h-[80%] max-h-[600px]" key={expense.id}
+                className="h-[80%] max-h-[600px] z-10" key={expense.id}
                 style={{scrollbarWidth: "thin",scrollbarColor: "#A1E3F9 white"}}
                 >
                     <ExpenseCard title={expense.title} amount={expense.amount} info={expense.info} category={expense.category} date={expense.date || ""} image={expense.image}/>

@@ -60,9 +60,9 @@ const PrintFilteredIncomes:React.FC<PrintFilteredIncomesProps> = ({year,month,ex
         return (   
             <div className='grid grid-cols-2 w-[100%] items-start justify-start gap-12'>
                 <div className='flex flex-col w-[100%] h-[100%] gap-0.5 rounded-sm items-start justify-center shadow-lg'>
-                    <div className='flex flex-row gap-3 w-[100%] items-center justify-start bg-white p-3 rounded-sm looking-at-animation'>    
+                    <div className='flex flex-row gap-3 w-[100%] items-center justify-start card-bg-color p-3 rounded-sm looking-at-animation'>    
                         <div className="flex flex-row gap-2 justify-start items-center w-[41%] ">
-                            <div className='flex justify-center items-center rounded-full p-5 bg-[#A1E3F9]'>
+                            <div className='flex justify-center items-center rounded-full p-5 bg-[#1A43BF]'>
                                 <AttachMoneyIcon sx={{scale:1.5}} />
                             </div>
                             <p>Total Income: </p>
@@ -70,9 +70,9 @@ const PrintFilteredIncomes:React.FC<PrintFilteredIncomesProps> = ({year,month,ex
                         <p className="font-bold">€{allIncomeInTheMonth}</p> 
                     </div>
                     <Divider />
-                    <div className='flex flex-row gap-3 w-[100%] justify-start items-center bg-white p-3 rounded-sm looking-at-animation'>
+                    <div className='flex flex-row gap-3 w-[100%] justify-start items-center card-bg-color p-3 rounded-sm looking-at-animation'>
                         <div className="flex flex-row gap-2 justify-start items-center w-[41%]">
-                            <div className='flex justify-center items-center rounded-full p-5 bg-[#A1E3F9]'>
+                            <div className='flex justify-center items-center rounded-full p-5  bg-[#1A43BF]'>
                                 <MoneyOffIcon sx={{scale:1.5}} />
                             </div>
                             <p>Total Expenses: </p>
@@ -81,9 +81,9 @@ const PrintFilteredIncomes:React.FC<PrintFilteredIncomesProps> = ({year,month,ex
                     </div>
                 </div>
                 <div className='flex flex-col w-[100%] h-[100%] gap-0.5 rounded-sm items-start justify-center shadow-lg'>
-                    <div className='w-[100%] flex flex-row items-center justify-start rounded-sm p-3 bg-white looking-at-animation'>
+                    <div className='w-[100%] flex flex-row items-center justify-start rounded-sm p-3 card-bg-color looking-at-animation'>
                         <div className="flex flex-row gap-2 justify-start items-center">
-                            <div className='flex justify-center items-center rounded-full p-5 bg-[#A1E3F9]'>
+                            <div className='flex justify-center items-center rounded-full p-5  bg-[#1A43BF]'>
                                 <WalletIcon sx={{scale:1.5}} />
                             </div>
                             <p className="text-base font-">Total Savings This Month: </p>
@@ -91,9 +91,9 @@ const PrintFilteredIncomes:React.FC<PrintFilteredIncomesProps> = ({year,month,ex
                         </div>      
                     </div>
                     <Divider />
-                    <div className='w-[100%] flex flex-row items-center justify-start rounded-sm p-3 bg-white shadow-lg looking-at-animation'>
+                    <div className='w-[100%] flex flex-row items-center justify-start rounded-sm p-3 card-bg-color shadow-lg looking-at-animation'>
                         <div className="flex flex-row gap-2 justify-start items-center ">
-                            <div className='flex justify-center items-center rounded-full p-5 bg-[#A1E3F9]'>
+                            <div className='flex justify-center items-center rounded-full p-5  bg-[#1A43BF]'>
                                 <ProductionQuantityLimitsIcon sx={{scale:1.5}} />
                             </div>
                             <p className="text-base font-">Highest Expense This Month: </p>

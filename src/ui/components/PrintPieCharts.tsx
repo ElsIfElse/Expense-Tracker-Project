@@ -99,10 +99,10 @@ useEffect(()=>{
     
 
     return ( 
-        <div className='w-[100%] h-[100%] grid grid-cols-2 gap-12 rounded-md'>
-            <div className=' h-[100%] flex flex-col justify-center items-center gap-1 shadow-lg'>
+        <div className='w-[100%] h-[100%] grid grid-cols-2 gap-12 rounded-md z-10'>
+            <div className=' h-[100%] flex flex-col justify-center items-center gap-1 shadow-lg z-10'>
                 <div className="w-[100%] flex flex-row justify-start ">
-                    <h2>Expense breakdown</h2>
+                    <label>Expense breakdown</label>
                 </div>
                 {/* <h3 className='italic'>Expenses</h3> */}
                 <PiChartElement data={[{value: gorceryValue, category: "Groceries"},{value: entertainmentValue, category: "Entertainment"},{value: healthValue, category: "Health"},{value: miscValue, category: "Misc"},{value: mayaValue, category: "Maya"}]}/>
@@ -110,7 +110,7 @@ useEffect(()=>{
             <div className=' h-[100%] flex flex-col justify-center items-center gap-1 shadow-lg'>
                 {/* <h3 className='italic'>Incomes</h3> */}
                 <div className="w-[100%] flex flex-row justify-start">
-                    <h2>Income breakdown</h2>
+                    <label>Income breakdown</label>
                 </div>
                 <PiChartElement data={[{value: salaryValue, category: "Salary       "},{value: giftsValue, category: "Gifts"},{value: miscIncomeValue, category: "Misc"},{value: rentValue, category: "Rent"}]}/>
             </div>

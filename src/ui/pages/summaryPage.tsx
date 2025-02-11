@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Expense, getIncomes, getStoreData, Income } from '../utils/storeApi';
 import PrintPieCharts from '../components/PrintPieCharts';
 import { Link } from 'react-router-dom';
+import Backgorund from '../components/Backgorund';
 
 
 
@@ -38,10 +39,10 @@ const SummaryPage = () => {
         },[])
 
     return ( 
-        <div className='w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] p-24 gap-24'>
-            <div className='w-[100vw] flex items-center flex-col max-w-[1200px] max-h-[1000px] px-24 gap-12'>
+        <div className='w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] px-24 gap-24'>
+            <div className='w-[100vw] flex items-center flex-col max-w-[1200px] max-h-[1000px] pt-24 px-24 gap-12 z-10'>
             {month && year && <div className='w-[50%] items-center justify-center grid grid-cols-2 gap-6 mt-12'>
-               {year && <select defaultValue={year} onChange={(e)=>{setYear(e.target.value)}} className='rounded-sm p-2 text-xl' typeof='select' name="" id="">
+               {year && <select defaultValue={year} onChange={(e)=>{setYear(e.target.value)}} className='card-bg-color rounded-sm p-2 text-xl' typeof='select' name="" id="">
                     <option value="2025">2025</option>
                     <option value="2026">2026</option> 
                     <option value="2027">2027</option>
@@ -49,7 +50,7 @@ const SummaryPage = () => {
                 {/* <div className='w-[100%] flex flex-col items-center'>
                     {month && year && <h1 className='font-light bg-white py-2 px-6 rounded-sm'>{year}/{month}</h1>}
                 </div> */}
-                <select defaultValue={month} className='rounded-sm p-2 text-xl' onChange={(e)=>{setMonth(e.target.value)}} name="" id="">
+                <select defaultValue={month} className='rounded-sm p-2 text-xl card-bg-color' onChange={(e)=>{setMonth(e.target.value)}} name="" id="">
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -69,12 +70,13 @@ const SummaryPage = () => {
             {year && month && <PrintFilteredIncomes expenses={expenses} incomes={incomes} year={year} month={month}/>}
             </div>
 
-            <div className='w-[100%] h-[45%] flex flex-col gap-12 justify-center items-center'>
+            <div className='w-[100%] h-[40%] flex flex-col gap-12 justify-center items-center z-10 '>
                 {expenses && incomes && year && month && <PrintPieCharts expenses={expenses} incomes={incomes} year={year} month={month}/>}            
             </div>
             
             
-            <Link to="/" className="absolute top-20 left-20 back-button"><ArrowBackIosIcon/></Link>
+            <Link to="/" className="absolute top-20 left-20 back-button z-10"><ArrowBackIosIcon  sx={{color:"white"}}/></Link>
+            <Backgorund randomAnimOn={true}/>
             </div>
      );
 }

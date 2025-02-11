@@ -11,7 +11,7 @@ app.whenReady().then (async() => {
         title: 'Expense Tracker',
         width: 1000,
         height: 1000,
-        autoHideMenuBar: true,
+        autoHideMenuBar: false,
         backgroundColor: '#A1E3F9',
         frame: true,
         resizable: false,

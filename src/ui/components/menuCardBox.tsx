@@ -18,7 +18,7 @@ const MenuCardBox:React.FC<MenuCardBoxProps> = ({navigationDirection,menuIcon,to
         <Link to={navigationDirection}>
         <motion.p 
         
-        whileHover={{scale: 1.03,backgroundColor: "#3674B5",cursor: "pointer",boxShadow: "0px 10px 2px #3674B5"}}
+        whileHover={{scale: 1.03,backgroundColor: "rgba(26, 67, 191, 0.85)",cursor: "pointer",boxShadow: "0px 10px 2px #1A43BF"}}
         transition={{
             duration: 0.5,
             type: "spring", 
@@ -26,7 +26,7 @@ const MenuCardBox:React.FC<MenuCardBoxProps> = ({navigationDirection,menuIcon,to
             damping: 13,}}
         // href={navigationDirection}
         
-        className="bg-[#578FCA] rounded-3xl flex flex-col items-center justify-center aspect-1/1 shadow-xl">
+        className="bg-[#123499] rounded-3xl flex flex-col items-center justify-center aspect-1/1 shadow-xl">
 
         <Tooltip 
         sx={{position:"absolute",zIndex:100,top:"50%",left:"50%",transform:"translate(-50%,-50%)",}}

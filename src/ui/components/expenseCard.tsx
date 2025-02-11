@@ -29,15 +29,17 @@ const ExpenseCard:React.FC<ExpenseCardProps> = ({title,amount,info,category,date
 
     return ( 
         <div className='w-[60vw] overflow-auto'>
-              <Accordion sx={{width: "100%"}}>
+              <Accordion className='card-bg-color' sx={{backgroundColor:"#0A2472",width: "100%",":hover":{backgroundColor: "rgba(26,67,191,0.6)",}}}>
                 <AccordionSummary
-                  expandIcon={< ArrowDownwardIcon/>}
+                  expandIcon={< ArrowDownwardIcon sx={{color:"white"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"
-                  sx={{width: "100%"}}
+                  className='card-bg-color'
+                  sx={{width: "100%",backgroundColor:"#0A2472",":hover":{backgroundColor: "rgba(26,67,191,0.6)"}}}
+                  
                   >
                     <div className='w-full grid grid-cols-3 items-center'>
-                      <div className='flex flex-row gap-2 items-center'>
+                      <div className='flex flex-row gap-2 items-center '>
                       <IconPicker category={category}/>
                         <h3>{title}</h3>          
                       </div>
@@ -47,17 +49,17 @@ const ExpenseCard:React.FC<ExpenseCardProps> = ({title,amount,info,category,date
                 </AccordionSummary>
                 <AccordionDetails>
 
-              <div className='w-[100%] flex flex-row'>
-                <div className='flex flex-col gap-2 w-[50%]  pt-8'>
+              <div className='w-[100%] flex flex-row '>
+                <div className='flex flex-col gap-2 w-[80%] pt-8'>
 
                   <div className='flex flex-row gap-10'>
                     <span className='span'>Category: </span>
-                    {category === "" ? <p className='text-red-500 uppercase'>No Category</p> : <p className='capitalize'>{category}</p>}
+                    {category === "" ? <p className='text-red-500 uppercase'>No Category</p> : <p className='capitalize text-white'>{category}</p>}
                   </div>
 
                   <div className='flex flex-row gap-10'>
-                    <span className='span'>Expense Description: </span>
-                    { info === "" ? <p className='text-red-500 uppercase'>No Description</p> : <p>{info}</p>}
+                    <span className='span'> Description: </span>
+                    { info === "" ? <p className='text-red-500 uppercase'>No Description</p> : <p className='text-white'>{info}</p>}
                   </div>
                 </div>
 
@@ -70,8 +72,8 @@ const ExpenseCard:React.FC<ExpenseCardProps> = ({title,amount,info,category,date
                 <Modal open={open} onClose={handleClose}>
                   <div className='w-[100vw] h-[100vh] flex flex-col items-center justify-center gap-6'>
                     <button onClick={handleClose} 
-                    className='bg-white rounded-xl px-5 py-2 shadow-sm
-                                hover:-translate-y-0.5 hover:rotate-4 hover:shadow-md hover:bg-[#f3f3f3]
+                    className='rounded-xl px-5 py-2 shadow-sm card-bg-color
+                                hover:-translate-y-0.5 hover:rotate-4 hover:shadow-md 
                                 transition-all duration-150'>X</button>
                     {image !==null ? <img className='max-h-[90vh]' src={image} alt="" />
                     :

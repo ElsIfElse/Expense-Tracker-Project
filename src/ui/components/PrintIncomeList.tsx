@@ -19,11 +19,11 @@ const PrintIncomeList = () => {
 
     return ( 
         <div 
-        className=" flex flex-col w-[60vw] min-w-[400px] max-h-[600px] overflow-auto rounded-sm gap-2"
+        className=" flex flex-col w-[60vw] min-w-[400px] max-h-[600px] overflow-auto rounded-sm gap-2 z-10"
         style={{scrollbarWidth: "thin",scrollbarColor: "#A1E3F9 white"}}
         >
             {incomes && incomes.map((income)=>(
-                <div className="w-[100%] max-h[330px] flex flex-col border-none outline-none" key={income.id}>
+                <div className="w-[100%] max-h[330px] flex flex-col border-none outline-none z-10 " key={income.id}>
                     <IncomeCard2 title={income.title} amount={income.amount} info={income.info} category={income.category} date={income.date || ""}/>
                 </div>
             ))}

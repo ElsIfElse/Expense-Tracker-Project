@@ -17,6 +17,7 @@ const AlertMessage:React.FC<AlertMessageProps> = ({message}) => {
             ease: "easeInOut",
 
         }}
+        className="z-10"
         
         >
             <Alert variant="filled" severity="error">{message}</Alert>
