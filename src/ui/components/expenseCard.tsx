@@ -71,9 +71,9 @@ const ExpenseCard:React.FC<ExpenseCardProps> = ({title,amount,info,category,date
                 </div>
                 <Modal open={open} onClose={handleClose}>
                   <div className='w-[100vw] h-[100vh] flex flex-col items-center justify-center gap-6'>
-                    <button onClick={handleClose} 
+                    <button style={{color:"white"}} onClick={handleClose} 
                     className='rounded-xl px-5 py-2 shadow-sm card-bg-color
-                                hover:-translate-y-0.5 hover:rotate-4 hover:shadow-md 
+                                hover:-translate-y-0.5 hover:rotate-4
                                 transition-all duration-150'>X</button>
                     {image !==null ? <img className='max-h-[90vh]' src={image} alt="" />
                     :

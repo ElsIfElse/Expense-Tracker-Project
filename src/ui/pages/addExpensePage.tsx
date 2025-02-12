@@ -11,6 +11,8 @@ import DialogPopUp from "../components/Dialog";
 import AlertMessage from "../components/Alert";
 import { Link } from "react-router-dom";
 import Backgorund from "../components/Backgorund";
+import { motion } from "motion/react";
+import { animation } from "../utils/animation";
 
 interface CalendarOutput{
     $D:number,
@@ -99,8 +101,13 @@ const AddExpensePage = () => {
     }
 
     return ( 
-        <div className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] overflow-hidden">
-                <div className="w-[100%] flex flex-row justify-between h-full py-[192px] px-[144px] z-10 overflow-hidden">
+        <motion.div 
+        className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] overflow-hidden">
+                <motion.div 
+                variants={animation}
+                animate="animate"
+                exit="exit"
+                className="w-[100%] flex flex-row justify-between h-full py-[192px] px-[144px] z-10 overflow-hidden">
                     <div className="flex flex-col items-start justify-start gap-12 ">
                         <div className="flex flex-col gap-4 items-start w-[100%]"> 
                             <div className="flex flex-col gap-1 items-start w-[100%]">
@@ -123,17 +130,17 @@ const AddExpensePage = () => {
 
                                 <select className="p-2 border w-[100%]" onChange={(e)=>setExpenseCategory(e.target.value)} name="categories" id="">
                                     <option className="text-slate-300" disabled selected value="">Choose a category</option>
-                                    <option className="bg-slate-100" value="groceries">Groceries</option>
-                                    <option className="bg-slate-100" value="transportation">Transportation</option>
-                                    <option className="bg-slate-100" value="entertainment">Entertainment</option>
-                                    <option className="bg-slate-100" value="health">Health</option>
-                                    <option className="bg-slate-100" value="misc">Misc</option>
+                                    <option className="" value="groceries">Groceries</option>
+                                    <option className="" value="transportation">Transportation</option>
+                                    <option className="" value="entertainment">Entertainment</option>
+                                    <option className="" value="health">Health</option>
+                                    <option className="" value="misc">Misc</option>
                                 </select>
                             </div>
                         </div>
 
 
-                        <div className="flex flex-col gap-1 items-start rounded-sm border border-slate-300 w-[100%]">
+                        <div className="flex flex-col gap-1 items-start rounded-sm border-2 border-slate-600 w-[100%]">
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DateCalendar onChange={(value)=>handleDateInputChange(value)} 
                                 sx={{border:"none",backgroundColor:"#0A2472",width:"100%",height:"100%",
@@ -152,21 +159,21 @@ const AddExpensePage = () => {
                         </div>                            
                     </div>
 
-                    <div className="flex flex-col items-center h-full z-10"> 
-                        <div className="flex flex-col items-center justify-start w-[300px] h-[400px]">
+                    <div className="flex flex-col items-center h-full z-10 pt-5"> 
+                        <div className="flex flex-col items-center justify-start w-[300px] h-[300px]">
                             {expenseImage ? 
-                            <img src={expenseImage} className="max-w-[300px] max-h-[400px] rounded-sm" alt="" />
+                            <img src={expenseImage} className="max-w-[300px] max-h-[265px] rounded-sm" alt="" />
                             :
-                            <img src={DEFAULT_IMAGE_URL} className="max-w-[300px] max-h-[400px] rounded-sm" alt="" />
+                            <img src={DEFAULT_IMAGE_URL} className="max-w-[300px] max-h-[265px] rounded-sm" alt="" />
                         }
                         </div>
 
                         <div className="flex flex-col gap-1 items-start z-10">
                             <label className="m-0 text-xs" htmlFor="Expense Category">Add Expense Receipt</label>
-                            <input className="border p-2" type="file" accept="image/*" onChange={(e)=>handleFileChange(e as React.ChangeEvent<HTMLInputElement>)}/>
+                            <input className="hover:cursor-pointer" type="file" accept="image/*" onChange={(e)=>handleFileChange(e as React.ChangeEvent<HTMLInputElement>)}/>
                         </div>
                     </div>
-                </div>
+                </motion.div>
                 <div className="flex flex-row gap-4 justify-end items-center z-10">
                     <button className="button add-button" onClick={()=>handleClick(expenseTitle,expenseAmount,expenseInfo,expenseImage,expenseDate,expenseCategory)}>Add Expense</button>
                     {/* <button className="button" onClick={()=>emptyAllFields()}>Empty Fields</button> */}
@@ -176,9 +183,11 @@ const AddExpensePage = () => {
 
                 <Link to="/" className="absolute top-20 left-20 back-button z-10"><ArrowBackIosIcon  sx={{color:"white"}}/></Link>
                 {/* <button onClick={()=>emptyStoreData()}>Empty Store</button> */}
-                {dialogOpenState && <DialogPopUp message={"Your expense has been added successfully"} showSecondButton={true} triggerVisibility={()=>setDialogOpenState(!dialogOpenState)}/>}
-                <Backgorund randomAnimOn={false} />
-        </div>
+                {dialogOpenState && <DialogPopUp 
+                
+                message={"Your expense has been added successfully"} showSecondButton={true} triggerVisibility={()=>setDialogOpenState(!dialogOpenState)}/>}
+                <Backgorund randomAnimOn={true} />
+        </motion.div>
      );
 }
 

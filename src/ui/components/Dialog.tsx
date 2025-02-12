@@ -26,22 +26,29 @@ const DialogPopUp: React.FC<Props> = ({triggerVisibility,message,showSecondButto
     }
 
     return ( 
-            <Dialog maxWidth='xl' open={true}
+            <Dialog  open={true}
+
                   sx={{
+                    
+                    margin:'0px',
                     display: 'flex',
                     flexDirection: 'column',
+                    justifyContent: 'center',
                     m: 'auto',
                     width: 'fit-content',
+                    backgroundColor: 'transparent',
+                    '& .MuiDialog-paper': {
+                      backgroundColor: 'rgba(10,36,114,0.5)',text:'white',backdropFilter: 'blur(5px)',fontFamily:'Figtree',color:'white',paddingBottom:"10px",paddingX:"10px"}
                   }}>
-                <DialogTitle>Success!</DialogTitle>
+                <DialogTitle sx={{color:"white",fontFamily:'Figtree'}}>Success!</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
+                    <DialogContentText sx={{color:"white",fontFamily:'Figtree'}}>
                     {message}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    {showSecondButton ? <Link to={"/viewExpensePage"} className='button'>Go To List</Link> : null}
-                    <button onClick={()=>handleClick()} className='button'>Cancel</button>
+                    {showSecondButton ? <Link style={{fontFamily:'Figtree'}} to={"/viewExpensePage"} className='button text-sm text-black'>Go To List</Link> : null}
+                    <button onClick={()=>handleClick()} style={{fontFamily:'Figtree'}} className='button text-sm ext-black'>Continue</button>
                 </DialogActions>
             </Dialog>
      );

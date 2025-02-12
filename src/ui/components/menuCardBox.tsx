@@ -29,12 +29,12 @@ const MenuCardBox:React.FC<MenuCardBoxProps> = ({navigationDirection,menuIcon,to
         className="bg-[#123499] rounded-3xl flex flex-col items-center justify-center aspect-1/1 shadow-xl">
 
         <Tooltip 
-        sx={{position:"absolute",zIndex:100,top:"50%",left:"50%",transform:"translate(-50%,-50%)",}}
+        sx={{position:"absolute",zIndex:100,top:"50%",left:"50%"}}
         slots={{transition: Fade}} 
         slotProps={{
             
             tooltip:{
-                style:{fontSize:'1rem',backgroundColor: "#3674B5",borderRadius:'5px',color:"white"},},
+                style:{fontSize:'1rem',backgroundColor: "#3674B5",borderRadius:'5px',color:"white"}},
                 transition: {timeout: 200},
                 popper:{modifiers:[{
                     name: 'offset',

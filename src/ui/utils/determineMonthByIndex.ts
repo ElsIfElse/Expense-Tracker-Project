@@ -1,3 +1,5 @@
+import { Expense, Income } from "./storeApi"
+
 export const determineMonthByIndex = function(index:number):string {
     switch(index){
         case 1:
@@ -39,4 +41,11 @@ export const determineMonthByIndex = function(index:number):string {
         default:
             return ""
     }
+}
+
+export const filterByDate = function(objects:Expense[] | Income[],date:string):Expense[] | Income[] {
+    const filteredObject = objects.filter((income)=>{
+        return income.date?.startsWith(date)
+    })
+    return filteredObject
 }

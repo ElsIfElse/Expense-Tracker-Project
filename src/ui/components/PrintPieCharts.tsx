@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Expense, Income } from "../utils/storeApi"
 import PiChartElement from "./PieChart"
+import { filterByDate } from "../utils/determineMonthByIndex"
 
 
 interface PrintPieChartsProps {
@@ -9,6 +10,7 @@ interface PrintPieChartsProps {
     expenses:Expense[]
     incomes:Income[]
 }
+
 
 const PrintPieCharts:React.FC<PrintPieChartsProps> = ({year,month,expenses,incomes}) => {
     
@@ -20,6 +22,7 @@ const [entertainmentValue,setEntertainmentValue] = useState<number>(0)
 const [healthValue,setHealthValue] = useState<number>(0)
 const [miscValue,setMiscValue] = useState<number>(0)
 const [mayaValue,setMayaValue] = useState<number>(0)
+const [transportationValue,setTransportationValue] = useState<number>(0)
 
 const [salaryValue,setSalaryValue] = useState<number>(0)
 const [giftsValue,setGiftsValue] = useState<number>(0)
@@ -29,20 +32,7 @@ const [miscIncomeValue,setMiscIncomeValue] = useState<number>(0)
 const [expenseSum,setExpenseSum] = useState<number>(0)
 const [incomeSum,setIncomeSum] = useState<number>(0)
 
-const filterByDate = function(objects:Expense[] | Income[],date:string):Expense[] | Income[] {
-    const filteredObject = objects.filter((income)=>{
-        return income.date?.startsWith(date)
-    })
-    return filteredObject
-}
 
-// const getIncomeExpenseSummary = function(){
-//     const allExpenses = filterByDate(expenses,year + "-" + month)
-//     const allIncomes = filterByDate(incomes,year + "-" + month)
-
-//     setExpenseSum(addAmountsTogether(allExpenses))
-//     setIncomeSum(addAmountsTogether(allIncomes))
-// }
 
 const getObjectsByCategory = function(category:string, object:Expense[] | Income[]):Expense[] | Income[] {
    const groceryObjects:Expense[] | Income[] = object.filter((expense)=>{
@@ -60,6 +50,7 @@ const addAmountsTogether = function(objects:Expense[] | Income[]):number{
 }
 
 
+
 useEffect(()=>{
 
     const mainExpenseFunction = function(){
@@ -69,6 +60,7 @@ useEffect(()=>{
         setHealthValue(Math.round(addAmountsTogether(getObjectsByCategory("health",objectsInMonth))/expenseSum*100))
         setMiscValue(Math.round(addAmountsTogether(getObjectsByCategory("misc",objectsInMonth))/expenseSum*100))
         setMayaValue(Math.round(addAmountsTogether(getObjectsByCategory("maya",objectsInMonth))/expenseSum*100))
+        setTransportationValue(Math.round(addAmountsTogether(getObjectsByCategory("transportation",objectsInMonth))/expenseSum*100))
 
     }
     const mainIncomeFunction = function(){
@@ -85,8 +77,9 @@ useEffect(()=>{
     
         setExpenseSum(addAmountsTogether(allExpenses))
         setIncomeSum(addAmountsTogether(allIncomes))
+        
     }
-
+    
     mainExpenseFunction()
     mainIncomeFunction()
     getIncomeExpenseSummary()
@@ -100,12 +93,14 @@ useEffect(()=>{
 
     return ( 
         <div className='w-[100%] h-[100%] grid grid-cols-2 gap-12 rounded-md z-10'>
-            <div className=' h-[100%] flex flex-col justify-center items-center gap-1 shadow-lg z-10'>
+            <div 
+            
+            className=' h-[100%] flex flex-col justify-center items-center gap-1 shadow-lg z-10'>
                 <div className="w-[100%] flex flex-row justify-start ">
                     <label>Expense breakdown</label>
                 </div>
                 {/* <h3 className='italic'>Expenses</h3> */}
-                <PiChartElement data={[{value: gorceryValue, category: "Groceries"},{value: entertainmentValue, category: "Entertainment"},{value: healthValue, category: "Health"},{value: miscValue, category: "Misc"},{value: mayaValue, category: "Maya"}]}/>
+                <PiChartElement data={[{value: transportationValue, category: "Transportation"},{value: gorceryValue, category: "Groceries"},{value: entertainmentValue, category: "Entertainment"},{value: healthValue, category: "Health"},{value: miscValue, category: "Misc"},{value: mayaValue, category: "Maya"}]}/>
             </div> 
             <div className=' h-[100%] flex flex-col justify-center items-center gap-1 shadow-lg'>
                 {/* <h3 className='italic'>Incomes</h3> */}

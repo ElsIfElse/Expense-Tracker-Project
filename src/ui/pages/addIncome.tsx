@@ -7,6 +7,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import AlertMessage from "../components/Alert";
 import { Link } from "react-router-dom";
 import Backgorund from "../components/Backgorund";
+import { motion } from "motion/react";
+import { animation } from "../utils/animation";
 
 
 const AddIncomePage = () => {
@@ -108,9 +110,15 @@ const AddIncomePage = () => {
         setIncomeDate(stringDate)
     }
 
+
+
     return ( 
         <div className=" w-[100vw] h-[100vh] flex items-center flex-col max-w-[1200px] max-h-[1000px] ">
-                <div className="w-[100%] flex flex-row justify-between h-full pt-[192px] px-[144px] z-10 ">
+                <motion.div 
+                variants={animation}
+                animate="animate"
+                exit="exit"
+                className="w-[100%] flex flex-row justify-between h-full pt-[192px] px-[144px] z-10 ">
                     <div className="flex flex-col items-start justify-start gap-12 ">
                         <div className="flex flex-col gap-4 items-start w-[100%]"> 
                     <div className="flex flex-col gap-1 items-start w-[100%]">
@@ -140,21 +148,25 @@ const AddIncomePage = () => {
                         </select>
                     </div>
                     </div>
-                        <div className="flex flex-col gap-1 items-start border bg-white rounded-sm z-10">
-                            <LocalizationProvider  dateAdapter={AdapterDayjs}>
-                                        <DateCalendar onChange={(value)=>handleDateInputChange(value)} 
-                                        
-                                        sx={{width:"100%",height:"100%","& .MuiPickersDay-root":{fontFamily:"Figtree",fontSize:"0.9rem",fontStyle:"italic"},"& .MuiPickersDay-root:hover": {
-                                        backgroundColor: "#A1E3F9 ", // Custom hover color
-                                        color: "black", // Change text color
-                                        borderRadius: "50%", // Optional: fully rounded
-                                        transform: "", // Optional: slightly enlarge
-                                        transition: "0.3s ease", // Smooth hover transition
-                                },}}/>
+                        <div className="flex flex-col gap-1 items-start border-2 border-slate-600  bg-white rounded-sm z-10">
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DateCalendar onChange={(value)=>handleDateInputChange(value)} 
+                                sx={{border:"none",backgroundColor:"#0A2472",width:"100%",height:"100%",
+                                    "& .MuiPickersDay-root":{fontSize:"0.9rem",fontStyle:"italic",color:"white"},"& .MuiPickersDay-root:hover": {
+                                backgroundColor: "#A1E3F9 ", // Custom hover color
+                                color: "white", // Change text color
+                                borderRadius: "50%", // Optional: fully rounded
+                                transform: "", // Optional: slightly enlarge
+                                transition: "0.3s ease", // Smooth hover transition
+                                },
+                                "& .MuiTypography-root":{color:"white"},
+                                "& .MuiSvgIcon-root":{color:"white"},
+                                "& .MuiDateCalendar-root":{border:"none"},
+                                }}/>
                             </LocalizationProvider>
                         </div>
                     </div>
-                </div>
+                </motion.div>
                          
         <div className="flex flex-row gap-4 justify-end items-center z-10">
             <button className="button add-button" onClick={()=>handleClick(incomeTitle,incomeAmount,incomeInfo,incomeDate,incomeCategory)}>Add Income</button>
@@ -163,7 +175,7 @@ const AddIncomePage = () => {
        {showAlert && <AlertMessage message={alertMessage}/>}
        <Link to="/" className="absolute top-20 left-20 back-button z-10"><ArrowBackIosIcon  sx={{color:"white"}}/></Link>
        {/* <button onClick={()=>emptyIncomeStore()}>Empty Store</button> */}
-        {dialogOpenState && <DialogPopUp  message="Income added successfully" showSecondButton={false} triggerVisibility={()=>setDialogOpenState(!dialogOpenState) } refreshPage={true}/>}
+        {dialogOpenState && <DialogPopUp  message="Your income has been added successfully" showSecondButton={true} triggerVisibility={()=>setDialogOpenState(!dialogOpenState) } refreshPage={true}/>}
         <Backgorund randomAnimOn={true} />
         </div>
         

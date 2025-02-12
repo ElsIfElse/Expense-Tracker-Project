@@ -40,11 +40,23 @@ const PiChartElement: React.FC<InputObjects> = ({ data }) => {
                         }
                     },
                     pieArc:{
-                        strokeWidth: 0
-                    }
-                    
+                        strokeWidth: 0,
+                        
+                    },
+                    pieArcLabel:{
+                        color: "rgb(255,255,255)",
+                        fill: "white",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                        textAnchor: "middle",
+                        dominantBaseline: "middle",
+                        pointerEvents: "none",
+                        transform: "translate(0, 0)",
+                        opacity: 1
+                        
+                    },      
                 }}
-                    colors={['red', 'blue', 'green', 'yellow', 'orange']}
+                    colors={['red', 'blue', 'green', 'purple', 'orange']}
                     sx={{
                         borderRadius: "6px",
                         backgroundColor: "rgb(10, 36, 114)",
@@ -52,19 +64,27 @@ const PiChartElement: React.FC<InputObjects> = ({ data }) => {
                         margin: "0px",
                         zIndex: 10,
                         color: "white",
+                        "& .MuiPieArcLabel-root": {
+                        fill: "white",
+                        fontSize: "1.6rem",
+                        transform: "translate(15px, -100px)",
+                        scale:0.5
+                    }
                     }}
                     series={[{
-                        cx: '40%',
+                        cx: '43%',
                         cy: '50%',
+                        
                         highlightScope: { fade: 'global', highlight: 'item' },
                         faded: { innerRadius: 45, additionalRadius: -5, color: 'gray' },
                         arcLabel: (item) => item.value === 0 || item.value === undefined || item.value === null || item.value.toString() === "NaN" ? "" : `${item.value}%`,
                         arcLabelRadius: 110,
+                        
                         data: [
                             ...addData(data),
                         ],
-                        innerRadius: 45,
-                        outerRadius: 90,
+                        innerRadius: 40,
+                        outerRadius: 75,
                         paddingAngle: 5,
                         cornerRadius: 5,
                         startAngle: 0,

@@ -9,6 +9,8 @@ import { useTheme } from '@mui/material/styles';
 import PrintIncomeList from "../components/PrintIncomeList";
 import { Link } from "react-router-dom";
 import Backgorund from "../components/Backgorund";
+import { motion } from "motion/react";
+import { animation } from "../utils/animation";
 
 
 
@@ -27,6 +29,8 @@ const ViewExpensesPage = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
         setTriggerShownList(false);
       };
+
+      
 
     return ( 
         <div className=" w-[100vw] h-[100vh] flex flex-col items-center overflow-hidden">
@@ -57,25 +61,34 @@ const ViewExpensesPage = () => {
               </Button>
             }
             />
-              {triggerShownList && <div className="w-[100vw] flex flex-col items-center z-10 overflow-hidden">
+              {triggerShownList && <motion.div 
+              variants={animation}
+              animate = "animate"
+              exit = "exit"
+              className="w-[100vw] flex flex-col items-center z-10 overflow-hidden">
                   <div className="w-[60vw] flex flex-col items-center gap-2 max-h-[600px] py-12 z-10 ">
                       <div className="w-[100%] flex flex-col items-start z-10">
                           <h1>Income list</h1>
                       </div>
                       <PrintIncomeList/>
                   </div>
-                  <a className="absolute top-20 left-20 back-button" href="/"><ArrowBackIosIcon/></a>
-              </div>}
-              {!triggerShownList && <div className=" w-[100vw] h-[100vh] flex flex-col items-center py-12 z-10 overflow-hidden">
+              </motion.div>}
+              
+              {!triggerShownList && <motion.div 
+              variants={animation}
+              animate = "animate"
+              exit = "exit"
+              className=" w-[100vw] flex flex-col items-center py-12 z-10 overflow-hidden">
                   <div className="w-[60vw] flex flex-col items-center gap-2 max-h-[600px] z-10 overflow-hidden">
-                  <div className="w-[100%] flex flex-col items-start z-10 overflow-hidden ">
+                  <div className="w-[100%] flex flex-col items-start z-10">
                           <h1>Expense list</h1>
                       </div>
                       <PrintExpenseList/>
                   </div>
-                  <Link to="/" className="absolute top-20 left-20 back-button z-10"><ArrowBackIosIcon  sx={{color:"white"}}/></Link>
-                  </div>}
-                  <Backgorund randomAnimOn={false}/>
+                  </motion.div>}
+                  <Backgorund randomAnimOn={true}/>
+                  <Link className="absolute top-20 left-20 back-button" to="/"><ArrowBackIosIcon sx={{color:"white"}}/></Link>
+
         </div>
         
      );
